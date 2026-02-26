@@ -19,4 +19,6 @@ jobs:
           . bin/activate-hermit
           hermit version
           hermit install tuc trh
+          tuc --version
+          trh --version
           hermit test tuc trh
