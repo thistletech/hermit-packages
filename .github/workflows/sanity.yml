@@ -1,0 +1,21 @@
+name: 'Sanity checks'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  packages-sanity:
+    name: Packages sanity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4.1.2
+      - name: Test packages
+        run: |
+          set -euxo pipefail
+          . bin/activate-hermit
+          hermit version
+          hermit test tuc trh
